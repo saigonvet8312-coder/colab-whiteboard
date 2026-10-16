@@ -1,18 +1,31 @@
-# Whiteboard video on Google Colab
+# Whiteboard Studio for Google Colab
 
-This folder contains a Colab notebook that installs and runs [chalkboard](https://github.com/Atharva-Kanherkar/chalkboard) in a temporary Colab runtime. It uses Ollama with Qwen2.5 3B for script generation and Piper for Vietnamese narration. Chalkboard splits the narration into scenes, draws the matching whiteboard visuals, syncs each scene to the voice, and joins the result into one MP4. No API key is required; AI image generation is disabled by default.
+A self-contained Vietnamese whiteboard-video generator. The app and pipeline source in this repository are authored for this project; the notebook does not clone or run the Chalkboard repository.
 
-The output is hand-drawn whiteboard animation, not realistic AI-generated footage.
+## Features
 
-## Use it
+- A Colab UI with progress for script generation, per-scene narration, scene drawing, and final assembly.
+- Ollama generates a Vietnamese script and a separate visual prompt plus diagram for each scene.
+- Piper creates a Vietnamese voice track for every scene.
+- Python/Pillow draws matching whiteboard scenes; FFmpeg syncs the voice and joins the scenes into one MP4.
+- Download buttons for the finished MP4 and the generated script JSON.
 
-1. Upload this folder to your own public GitHub repository.
-2. Open `chalkboard_colab.ipynb` in Google Colab, or add this badge after replacing the placeholders:
+## Run
 
-   `[Open in Colab](https://colab.research.google.com/github/USERNAME/REPOSITORY/blob/main/colab-whiteboard/chalkboard_colab.ipynb)`
+1. Upload the files in this folder to the root of your public GitHub repository: `chalkboard_colab.ipynb`, `whiteboard_studio.py`, `requirements.txt`, and `README.md`.
+2. Open `chalkboard_colab.ipynb` in Google Colab.
+3. Run the setup cells from top to bottom, then press **Tạo kịch bản và video** in the UI.
+4. Enter a Vietnamese topic. Watch the scene cards and progress update, then click **Tải video MP4**.
 
-3. Run the cells from top to bottom, enter a video topic, then download the MP4.
+The first run downloads the app dependencies, the Qwen2.5 3B model (about 1.9 GB), and the Vietnamese Piper voice into Colab. A fresh Colab runtime needs setup again.
 
-The first run downloads Node dependencies, Chromium, the Qwen model (about 1.9 GB), and the Vietnamese Piper voice. Re-run setup cells after starting a fresh Colab runtime.
+## Dependencies and ownership
 
-This notebook is a Colab launcher for the upstream project, not a full fork of its source code.
+The app/pipeline code is in this repository. It uses Ollama, Piper TTS, FFmpeg, Pillow, Requests, and ipywidgets as external open-source tools/libraries, plus their model/voice files. Those are necessary for local language generation, speech, image rendering, and MP4 encoding. The visuals are whiteboard diagrams generated from each scene's prompt; this is not photorealistic text-to-video.
+
+## Colab notebook URL
+
+After uploading to the repository root, open:
+
+`https://colab.research.google.com/github/saigonvet8312-coder/colab-whiteboard/blob/main/chalkboard_colab.ipynb`
+
