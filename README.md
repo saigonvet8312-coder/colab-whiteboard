@@ -1,6 +1,8 @@
 # Whiteboard video on Google Colab
 
-This folder contains a Colab notebook that installs and runs [chalkboard](https://github.com/Atharva-Kanherkar/chalkboard) in a temporary Colab runtime. It uses Ollama with Qwen2.5 3B for script generation and Piper for Vietnamese narration. No API key is required; AI image generation is disabled by default.
+This folder contains a Colab notebook that installs and runs [chalkboard](https://github.com/Atharva-Kanherkar/chalkboard) in a temporary Colab runtime. It uses Ollama with Qwen2.5 3B for script generation and Piper for Vietnamese narration. Chalkboard splits the narration into scenes, draws the matching whiteboard visuals, syncs each scene to the voice, and joins the result into one MP4. No API key is required; AI image generation is disabled by default.
+
+The output is hand-drawn whiteboard animation, not realistic AI-generated footage.
 
 ## Use it
 
